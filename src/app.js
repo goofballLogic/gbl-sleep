@@ -1,18 +1,15 @@
 const express = require( "express" );
 const config = require( "../config" );
+const boot = require( "./boot" );
+const async = require( "async" );
 
 const PORT = config.PORT;
+
 const app = express();
+async.series( [
 
-function configure( expressApp ) {
+	next => boot( __dirname, app, config, next ),
+	next => app.listen( PORT, next ),
+	next => console.log( "Running on port: " + PORT )
 
-	expressApp.get( "/", ( req, res ) => res.send( "hello world" ) );
-
-}
-configure( app );
-app.listen( PORT, function( e ) {
-
-	if( e ) { throw e; }
-	console.log( "Running on port: " + PORT );
-
-} );
+] );
