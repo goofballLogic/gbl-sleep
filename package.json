@@ -1,0 +1,16 @@
+{
+  "name": "sleep",
+  "version": "1.0.0",
+  "description": "Sleeper service (but for data)",
+  "main": "app.js",
+  "scripts": {
+    "test": "./node_modules/.bin/cucumberjs"
+  },
+  "author": "goofballLogic",
+  "license": "ISC",
+  "dependencies": {
+    "cucumber": "^0.9.2",
+    "express": "^4.13.4",
+    "zombie": "^4.2.1"
+  }
+}
