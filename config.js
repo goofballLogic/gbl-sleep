@@ -4,6 +4,6 @@ const derive = (variableName, defaultValue) =>
 
 module.exports = {
 
-	"PORT" : derive( "PORT", 8080 );
+	"PORT" : derive( "PORT", 8080 )
 
-}
+};

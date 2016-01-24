@@ -4,6 +4,7 @@
   "description": "Sleeper service (but for data)",
   "main": "app.js",
   "scripts": {
+    "start": "node index.js",
     "test": "./node_modules/.bin/cucumberjs"
   },
   "author": "goofballLogic",
