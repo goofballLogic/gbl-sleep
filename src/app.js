@@ -1,7 +1,6 @@
-var port = process.env.PORT;
-var express = require( "express" );
-
-var app = express();
+const express = require( "express" );
+const PORT = process.env.PORT;
+const app = express();
 
 function configure( expressApp ) {
 
@@ -9,4 +8,9 @@ function configure( expressApp ) {
 
 }
 configure( app );
-app.listen( port );
+app.listen( port, function( e ) {
+
+	if( e ) { throw e; }
+	console.log( "Running on port: " + PORT );
+
+} );
