@@ -1,0 +1,6 @@
+{
+  "watch": [ "src", "features" ],
+  "script": "npm",
+  "args": [ "run", "start-test" ],
+  "name": "sleeper"
+}
