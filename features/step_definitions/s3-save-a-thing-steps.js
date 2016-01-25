@@ -3,7 +3,7 @@
 
 "use strict";
 
-var should = require( "should" );
+require( "should" );
 
 module.exports = function() {
 
@@ -14,18 +14,19 @@ module.exports = function() {
 		var url = [
 
 			this.config.service,
-			thing.tenant, thing.app, thing.user,
+			thing.app,
+			this.config.tenant, thing.user,
 			thing.domain, thing.category, thing.id
 
 		].join( "/" );
-		this.lastThing = url;
+		this.lastThing = { url: url, type: thing.type };
 		this.sendPUT( url, thing.type, value, callback );
 
 	} );
 
 	this.When(/^I get the last thing$/, function (callback) {
 
-		this.sendGET( this.lastThing, callback );
+		this.sendGET( this.lastThing.url, this.lastThing.type, callback );
 
 	} );
 

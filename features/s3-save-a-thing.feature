@@ -5,7 +5,7 @@ Feature: Save a thing
 
 	Scenario: Save and retrieve a thing
 		Given I put a thing
-			| app     | tenant      | user		| domain       | category | id    | value    | type       |
-			| testing | test-tenant | test-user | save-a-thing | test-1   | 12345 | yo momma | text/plain |
+			| app      | user		| domain       | category | id    | value    | type       |
+			| features | test-user  | save-a-thing | test-1   | 12345 | yo momma | text/plain |
 		When I get the last thing
 		Then the value should be "yo momma"

@@ -1,3 +1,7 @@
+/*eslint-env node, es6*/
+
+"use strict";
+
 const derive = (variableName, defaultValue) =>
 	( variableName in process.env ) ? process.env[ variableName ] : defaultValue;
 const required = variableName => {
@@ -10,6 +14,7 @@ const required = variableName => {
 
 module.exports = {
 
-	"service": derive( "service-url", "http://localhost:8080")
+	"service": derive( "SERVICE_URL", "http://localhost:8080"),
+	"tenant": required( "TENANT" )
 
 };

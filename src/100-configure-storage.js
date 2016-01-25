@@ -12,7 +12,7 @@ module.exports = {
 
 	configure: function( app, config, callback ) {
 
-		var provider = config.PROVIDER;
+		var provider = ( config.PROVIDER || "" ).toLowerCase();
 		if( provider in providers ) {
 
 			providers[ provider ].build( config, ( e, store ) => {

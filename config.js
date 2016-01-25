@@ -14,5 +14,7 @@ const required = variableName => {
 module.exports = {
 
 	"PORT": derive( "PORT", 8080 ),
-	"PROVIDER": required( "PROVIDER" )
+	"PROVIDER": required( "PROVIDER" ),
+	"S3": { "bucket": derive( "S3_BUCKET", "sleeper-service" ) }
+
 };

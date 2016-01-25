@@ -26,6 +26,7 @@ function send( method, iri, options, payload, callback ) {
 		options = { headers: headers };
 
 	}
+	callback = callback || ( ( e, res ) => console.log( e || res.statusCode ) );
 	var protocol = /^https/.test( url ) ? https : http;
 	var opts = url.parse( iri );
 	opts.method = method;
@@ -58,17 +59,29 @@ function World() {
 		send.call( this, "PUT", iri, options, payload, callback );
 
 	};
+	this.sendDELETE = function( iri, options, callback ) {
+
+		send.call( this, "DELETE", iri, options, null, callback );
+
+	};
 
 }
+
+var teardowns;
 
 module.exports = function() {
 
 	this.Before( function() {
 
+		teardowns = teardowns || [ () => this.sendDELETE( config.service + "/features/" + config.tenant ) ];
 		this.config = config;
 
 	} );
+	this.registerHandler( "AfterFeatures", function() {
 
+		teardowns.forEach( t => t() );
+
+	} );
 	this.World = World;
 
 };

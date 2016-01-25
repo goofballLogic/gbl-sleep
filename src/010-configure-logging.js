@@ -53,7 +53,7 @@ function initLogging( req, res, next ) {
 		}
 
 	};
-	req.sleep.log( req.method, req.url );
+	req.sleep.log( req.method, req.url, req.headers[ "content-type" ] || "", "=>", req.headers[ "accept" ] || "?" );
 	next();
 
 }
