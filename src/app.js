@@ -24,6 +24,6 @@ async.series( [
 
 	}
 	console.log( "Running on port: " + PORT ); //eslint-disable-line no-console
-	process.send( "HUP" );
+	if( process.send ) { process.send( "HUP" ); }
 
 } );
